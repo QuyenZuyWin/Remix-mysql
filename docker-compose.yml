@@ -4,9 +4,11 @@ services:
 
   node:
     container_name: 'remix-node'
-    build: './web/'
+    build: './web'
     ports:
       - 80:3000
+      - 81:3001
+      - 8080:8080
     tty: true
     volumes:
       - ./web/:/myapp:rw

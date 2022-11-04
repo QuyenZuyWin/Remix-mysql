@@ -27,8 +27,6 @@ echo You selected $REPLY\) $COMMAND
 if [ $COMMAND = "Docker-Up" ]; then
   docker-compose up -d
   docker-compose ps
-  docker-compose exec node sh -c "npm install"
-  docker-compose exec node sh -c "npm install prisma"
 fi
 
 if [ $COMMAND = "Docker-Down" ]; then
@@ -41,9 +39,9 @@ if [ $COMMAND = "Docker-Rebuild" ]; then
 fi
 
 if [ $COMMAND = "Start-remix" ]; then
-  docker-compose exec node sh -c "npm install"
-  docker-compose exec node sh -c "npx prisma generate"
-  docker-compose exec node sh -c "./start.sh"
+  docker-compose exec node sh -c "npx remix init"
+  docker-compose exec node sh -c "npm run setup"
+  docker-compose exec node sh -c "npm run dev"
 fi
 
 if [ $COMMAND = "prisma-generate" ]; then
